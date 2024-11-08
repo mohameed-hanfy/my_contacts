@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_contacts/widgets/grid_my_contacts.dart';
 import 'package:my_contacts/widgets/socialMediaIcons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -82,30 +83,7 @@ class _MyContactsState extends State<MyContacts> {
                   )
                 ],
               ),
-              GridView.builder(
-                itemCount: socialMedia.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3),
-                itemBuilder: (context, index) {
-                  // if (index < icons.length) {
-                  //   return socialMediaIcons(
-                  //     socialIcons: icons[index],
-                  //   );
-                  // } else {
-                  //   return socialMediaIcons(
-                  //     socialIcons: icons[index - icons.length],
-                  //   );
-                  // }
-
-                  return socialMediaIcons(
-                    socialIcons: socialMedia.keys.toList()[index],
-                    Url: socialMedia.values.toList()[index],
-                  );
-                },
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                padding: const EdgeInsets.all(8),
-              ),
+              gridMyContacts(socialMedia: socialMedia),
             ],
           ),
         ),
