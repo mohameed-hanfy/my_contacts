@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_contacts/start.dart';
+import 'package:my_contacts/core/colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 // ignore: must_be_immutable
@@ -18,12 +18,26 @@ class socialMediaIcons extends StatelessWidget {
       padding: const EdgeInsets.all(20.0),
       child: GestureDetector(
         onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (_) => StartScreen(Url: Url)));
+          showModalBottomSheet(
+              context: context,
+              builder: (context) {
+                return ElevatedButton(
+                  style: const ButtonStyle(
+                    backgroundColor: WidgetStatePropertyAll(kButtonColor),
+                  ),
+                  onPressed: () {
+                    launchUrl(Uri.parse(Url));
+                  },
+                  child: Text(
+                    'Start $socialIcons',
+                    style:const TextStyle(color: kTextColor),
+                  ),
+                );
+              });
         },
         child: ClipRRect(
           child: Image.asset(
-            'assets/$socialIcons',
+            'assets/$socialIcons.png',
             height: 60,
           ),
         ),

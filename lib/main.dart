@@ -12,7 +12,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(scaffoldBackgroundColor: kBackgrouendColor),
+      theme: ThemeData(
+          scaffoldBackgroundColor: kBackgrouendColor,
+          primaryColor: kBackgrouendColor),
       debugShowCheckedModeBanner: false,
       home: const MyContacts(),
     );

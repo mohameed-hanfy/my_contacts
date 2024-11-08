@@ -12,14 +12,14 @@ class MyContacts extends StatefulWidget {
 
 class _MyContactsState extends State<MyContacts> {
   Map<String, String> socialMedia = {
-    'facebook.png': 'https://www.youtube.com/watch?v=sKVkaya_iJY',
-    'whatsapp.png': 'https://www.youtube.com/watch?v=sKVkaya_iJY',
-    'github.png': 'https://www.youtube.com/watch?v=sKVkaya_iJY',
-    'tiktok.png': 'https://www.youtube.com/watch?v=sKVkaya_iJY',
-    'linkedin.png': 'https://www.youtube.com/watch?v=sKVkaya_iJY',
-    'twitter.png': 'https://www.youtube.com/watch?v=sKVkaya_iJY',
-    'viber.png': 'https://www.youtube.com/watch?v=sKVkaya_iJY',
-    'yahoo.png': 'https://www.youtube.com/watch?v=sKVkaya_iJY',
+    'facebook': 'https://www.youtube.com/watch?v=sKVkaya_iJY',
+    'whatsapp': 'https://www.youtube.com/watch?v=sKVkaya_iJY',
+    'github': 'https://www.youtube.com/watch?v=sKVkaya_iJY',
+    'tiktok': 'https://www.youtube.com/watch?v=sKVkaya_iJY',
+    'linkedin': 'https://www.youtube.com/watch?v=sKVkaya_iJY',
+    'twitter': 'https://www.youtube.com/watch?v=sKVkaya_iJY',
+    'viber': 'https://www.youtube.com/watch?v=sKVkaya_iJY',
+    'yahoo': 'https://www.youtube.com/watch?v=sKVkaya_iJY',
   };
 
   @override
