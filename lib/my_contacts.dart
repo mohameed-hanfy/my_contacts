@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:my_contacts/widgets/grid_my_contacts.dart';
-import 'package:my_contacts/widgets/socialMediaIcons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MyContacts extends StatefulWidget {
