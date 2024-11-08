@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_contacts/widgets/socialMediaIcons.dart';
 
-
 class gridMyContacts extends StatelessWidget {
   const gridMyContacts({
     super.key,
@@ -14,8 +13,8 @@ class gridMyContacts extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.builder(
       itemCount: socialMedia.length,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3),
+      gridDelegate:
+          const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
       itemBuilder: (context, index) {
         // if (index < icons.length) {
         //   return socialMediaIcons(
@@ -26,7 +25,7 @@ class gridMyContacts extends StatelessWidget {
         //     socialIcons: icons[index - icons.length],
         //   );
         // }
-    
+
         return socialMediaIcons(
           socialIcons: socialMedia.keys.toList()[index],
           Url: socialMedia.values.toList()[index],
@@ -34,7 +33,7 @@ class gridMyContacts extends StatelessWidget {
       },
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(12),
     );
   }
 }

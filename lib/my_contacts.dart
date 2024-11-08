@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_contacts/core/colors.dart';
 import 'package:my_contacts/widgets/grid_my_contacts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -44,7 +45,7 @@ class _MyContactsState extends State<MyContacts> {
               const Text(
                 "Mohamed Hanfy",
                 style: TextStyle(
-                    color: Colors.grey,
+                    color: kTextColor,
                     fontSize: 33,
                     fontWeight: FontWeight.bold),
               ),
@@ -55,7 +56,7 @@ class _MyContactsState extends State<MyContacts> {
                   const Text(
                     "+201099747094",
                     style: TextStyle(
-                        color: Colors.grey,
+                        color: kTextColor,
                         fontSize: 28,
                         fontWeight: FontWeight.bold),
                   ),
@@ -73,10 +74,10 @@ class _MyContactsState extends State<MyContacts> {
                       padding: const EdgeInsets.all(5),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
-                          color: Colors.white),
+                          color: kButtonColor),
                       child: Icon(
                         Icons.call,
-                        color: Colors.grey[900],
+                        color: kTextColor,
                       ),
                     ),
                   )

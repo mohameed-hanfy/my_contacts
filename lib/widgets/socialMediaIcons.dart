@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_contacts/start.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 // ignore: must_be_immutable
@@ -14,10 +15,11 @@ class socialMediaIcons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(20.0),
       child: GestureDetector(
         onTap: () {
-          launchUrl(Uri.parse(Url), mode: LaunchMode.externalApplication);
+          Navigator.push(context,
+              MaterialPageRoute(builder: (_) => StartScreen(Url: Url)));
         },
         child: ClipRRect(
           child: Image.asset(
