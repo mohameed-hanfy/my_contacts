@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_contacts/core/colors.dart';
+import 'package:my_contacts/core/virablus.dart';
 import 'package:my_contacts/widgets/socialMediaIcons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -10,20 +12,74 @@ class MyContacts extends StatefulWidget {
 }
 
 class _MyContactsState extends State<MyContacts> {
-  Map<String, String> socialMedia = {
-    'facebook.png': 'https://www.youtube.com/watch?v=sKVkaya_iJY',
-    'whatsapp.png': 'https://www.youtube.com/watch?v=sKVkaya_iJY',
-    'github.png': 'https://www.youtube.com/watch?v=sKVkaya_iJY',
-    'tiktok.png': 'https://www.youtube.com/watch?v=sKVkaya_iJY',
-    'linkedin.png': 'https://www.youtube.com/watch?v=sKVkaya_iJY',
-    'twitter.png': 'https://www.youtube.com/watch?v=sKVkaya_iJY',
-    'viber.png': 'https://www.youtube.com/watch?v=sKVkaya_iJY',
-    'yahoo.png': 'https://www.youtube.com/watch?v=sKVkaya_iJY',
+  
+  var phoneNumber = Uri.parse('tel:201099747097');
+
+  final Map myContacts = {
+    'facebook': Uri.parse(
+        "https://i.pinimg.com/564x/38/d5/12/38d51239fd61945405205c57575a4a7b.jpg"),
+    'whatsapp': Uri.parse(
+        "https://i.pinimg.com/564x/38/d5/12/38d51239fd61945405205c57575a4a7b.jpg"),
+    'github': Uri.parse(
+        "https://i.pinimg.com/564x/38/d5/12/38d51239fd61945405205c57575a4a7b.jpg"),
+    'tiktok': Uri.parse(
+        "https://i.pinimg.com/564x/38/d5/12/38d51239fd61945405205c57575a4a7b.jpg"),
+    'yahoo': Uri.parse(
+        "https://i.pinimg.com/564x/38/d5/12/38d51239fd61945405205c57575a4a7b.jpg"),
+    'twitter': Uri.parse(
+        "https://i.pinimg.com/564x/38/d5/12/38d51239fd61945405205c57575a4a7b.jpg"),
   };
 
   @override
   Widget build(BuildContext context) {
+
+    void changeMyState(){
+      setState(() {
+        
+      });
+    }
+
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        title: const Text(
+          "My Contacts",
+          style: TextStyle(color: kTextColor),
+        ),
+        leading: InkWell(
+          child: const Padding(
+            padding: EdgeInsets.only(top: 16, left: 8),
+            child: Text(
+              "my app",
+              style: TextStyle(color: kTextColor),
+            ),
+          ),
+          onTap: () {},
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 8),
+            child: IconButton(
+              onPressed: () {
+                link == null
+                    ? launchUrl(phoneNumber)
+                    : launchUrl(link, mode: LaunchMode.externalApplication);
+              },
+              icon: icon == null
+                  ? const Icon(
+                      Icons.call,
+                      color: Colors.white,
+                    )
+                  : Material(
+                      borderRadius: BorderRadius.circular(50),
+                      child: Image(
+                        image: AssetImage('assets/$icon.png'),
+                      ),
+                    ),
+            ),
+          )
+        ],
+      ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Container(
@@ -62,12 +118,8 @@ class _MyContactsState extends State<MyContacts> {
                   GestureDetector(
                     onTap: () {
                       // ignore: deprecated_member_use
-                      launchUrl(Uri.parse('tel:201099747097'));
+                      launchUrl(phoneNumber);
                     },
-                    // onDoubleTap: () {
-                    //   ScaffoldMessenger.of(context).showSnackBar(
-                    //       const SnackBar(content: Text("+201099747094")));
-                    // },
                     child: Container(
                       margin: const EdgeInsets.only(left: 10),
                       padding: const EdgeInsets.all(5),
@@ -83,24 +135,15 @@ class _MyContactsState extends State<MyContacts> {
                 ],
               ),
               GridView.builder(
-                itemCount: socialMedia.length,
+                itemCount: myContacts.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3),
                 itemBuilder: (context, index) {
-                  // if (index < icons.length) {
-                  //   return socialMediaIcons(
-                  //     socialIcons: icons[index],
-                  //   );
-                  // } else {
-                  //   return socialMediaIcons(
-                  //     socialIcons: icons[index - icons.length],
-                  //   );
-                  // }
-
                   return socialMediaIcons(
-                    socialIcons: socialMedia.keys.toList()[index],
-                    Url: socialMedia.values.toList()[index],
-                  );
+                      socialIcons: myContacts.keys.toList()[index],
+                      launchURL: myContacts.values.toList()[index],
+                      changeState: changeMyState,
+                      );
                 },
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
