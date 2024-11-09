@@ -13,7 +13,6 @@ class MyContacts extends StatefulWidget {
 }
 
 class _MyContactsState extends State<MyContacts> {
-  
   var phoneNumber = Uri.parse('tel:201099747097');
 
   final Map myContacts = {
@@ -33,9 +32,6 @@ class _MyContactsState extends State<MyContacts> {
 
   @override
   Widget build(BuildContext context) {
-
-    
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -59,11 +55,12 @@ class _MyContactsState extends State<MyContacts> {
               padding: const EdgeInsets.only(right: 8),
               child: IconButton(
                 onPressed: () {
-                  setValue.link == null
+                  setValue.getMyLink() == null
                       ? launchUrl(phoneNumber)
-                      : launchUrl(setValue.link, mode: LaunchMode.externalApplication);
+                      : launchUrl(setValue.getMyLink()!,
+                          mode: LaunchMode.externalApplication);
                 },
-                icon: setValue.icon == null
+                icon: setValue.getMyIcon() == null
                     ? const Icon(
                         Icons.call,
                         color: Colors.white,
@@ -71,7 +68,8 @@ class _MyContactsState extends State<MyContacts> {
                     : Material(
                         borderRadius: BorderRadius.circular(50),
                         child: Image(
-                          image: AssetImage('assets/${setValue.icon}.png'),
+                          image:
+                              AssetImage('assets/${setValue.getMyIcon()}.png'),
                         ),
                       ),
               ),
@@ -139,9 +137,9 @@ class _MyContactsState extends State<MyContacts> {
                     crossAxisCount: 3),
                 itemBuilder: (context, index) {
                   return socialMediaIcons(
-                      socialIcons: myContacts.keys.toList()[index],
-                      launchURL: myContacts.values.toList()[index],
-                      );
+                    socialIcons: myContacts.keys.toList()[index],
+                    launchURL: myContacts.values.toList()[index],
+                  );
                 },
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),

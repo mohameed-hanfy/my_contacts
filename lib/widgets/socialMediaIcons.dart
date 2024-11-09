@@ -32,8 +32,11 @@ class _socialMediaIconsState extends State<socialMediaIcons> {
           color: kTextColor,
           child: InkWell(
             onDoubleTap: () {
-              getValue.link = widget.launchURL;
-              getValue.icon = widget.socialIcons;
+              getValue.setMyIcon(widget.socialIcons);
+              getValue.setMyLink(widget.launchURL);
+
+              // getValue.link = widget.launchURL;
+              // getValue.icon = widget.socialIcons;
               getValue.notifyListeners();
             },
             onTap: () {
