@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_contacts/core/colors.dart';
-import 'package:my_contacts/core/virablus.dart';
+import 'package:my_contacts/core/my_provider.dart';
 import 'package:my_contacts/widgets/socialMediaIcons.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MyContacts extends StatefulWidget {
@@ -33,11 +34,7 @@ class _MyContactsState extends State<MyContacts> {
   @override
   Widget build(BuildContext context) {
 
-    void changeMyState(){
-      setState(() {
-        
-      });
-    }
+    
 
     return Scaffold(
       appBar: AppBar(
@@ -57,25 +54,27 @@ class _MyContactsState extends State<MyContacts> {
           onTap: () {},
         ),
         actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 8),
-            child: IconButton(
-              onPressed: () {
-                link == null
-                    ? launchUrl(phoneNumber)
-                    : launchUrl(link, mode: LaunchMode.externalApplication);
-              },
-              icon: icon == null
-                  ? const Icon(
-                      Icons.call,
-                      color: Colors.white,
-                    )
-                  : Material(
-                      borderRadius: BorderRadius.circular(50),
-                      child: Image(
-                        image: AssetImage('assets/$icon.png'),
+          Consumer<MyProvider>(
+            builder: (context, setValue, child) => Padding(
+              padding: const EdgeInsets.only(right: 8),
+              child: IconButton(
+                onPressed: () {
+                  setValue.link == null
+                      ? launchUrl(phoneNumber)
+                      : launchUrl(setValue.link, mode: LaunchMode.externalApplication);
+                },
+                icon: setValue.icon == null
+                    ? const Icon(
+                        Icons.call,
+                        color: Colors.white,
+                      )
+                    : Material(
+                        borderRadius: BorderRadius.circular(50),
+                        child: Image(
+                          image: AssetImage('assets/${setValue.icon}.png'),
+                        ),
                       ),
-                    ),
+              ),
             ),
           )
         ],
@@ -142,7 +141,6 @@ class _MyContactsState extends State<MyContacts> {
                   return socialMediaIcons(
                       socialIcons: myContacts.keys.toList()[index],
                       launchURL: myContacts.values.toList()[index],
-                      changeState: changeMyState,
                       );
                 },
                 shrinkWrap: true,
